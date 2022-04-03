@@ -1,0 +1,16 @@
+{:deps {:aliases [:cljs]}
+ :dev-http {8000 "public"}
+ :builds
+ {
+  :backend {:target :node-library
+            :runtime :node
+            :output-to "public/assets/app/js/cljs-backend.js"
+            :exports {:dummy backend/dummy-export}}
+  :app {:target :browser
+        :output-dir "public/assets/app/js"
+        :modules {:main {:entries [main]}}
+        :devtools {:ignore-warnings true}
+        :compiler-options 
+          {:infer-externs :auto
+           :output-feature-set :es-next}
+        }}}
